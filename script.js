@@ -5,7 +5,7 @@ let highscore = 0;
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
-document.querySelector('.check').addEventListener('click', function () {
+const logic = function () {
   const guess = Number(document.querySelector('.guess').value);
 
   //When there is no guess.
@@ -43,7 +43,8 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
-});
+};
+document.querySelector('.check').addEventListener('click', logic);
 
 // logic to reset the game to start or to use Again button
 document.querySelector('.again').addEventListener('click', function () {
@@ -60,6 +61,13 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.number').style.width = '15rem';
 });
 
+//Try enter to check
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    logic();
+  }
+});
 //Prev code before removing the duplicates(!To understand game logic in more depth and step by step)
 //When the guess is too high
 // else if (guess > secretNumber) {
